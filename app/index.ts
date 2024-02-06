@@ -2,12 +2,15 @@ import app from './src/appRunner';
 import { createServer } from 'http';
 import dotenv from 'dotenv';
 import { Request, Response, NextFunction } from 'express';
+import { initSocketServer } from './src/config/socket.config';
 
-const server = createServer(app);
 dotenv.config();
 
+const server = createServer(app);
+initSocketServer(server);
+
 server.listen(parseInt(process.env.PORT!) || 3000, process.env.ADDR || 'localhost', () => {
-    console.log(`[SERVER] - Server running at ${process.env.ADDR} on ${process.env.PORT}`);
+    console.log(`[server] - Server running at ${process.env.ADDR} on ${process.env.PORT}`);
 });
 
 app.use((err: any, req: Request, res: Response, next: NextFunction) => {
