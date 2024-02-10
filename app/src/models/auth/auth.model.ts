@@ -32,7 +32,7 @@ export const AuthModel: AuthModelInterface = {
             }else{
                 const loggedCredentials = result.motivo.split('|');
                 const refreshToken = jwt.sign({ id_user_credentials: loggedCredentials[0], id_user_account: loggedCredentials[1], email: email }, process.env.JWT_SEC!, {
-                    expiresIn: '1M'
+                    expiresIn: '30d'
                 });
 
                 const accessToken = jwt.sign({ refreshToken: refreshToken, email: email }, process.env.JWT_REF!, {

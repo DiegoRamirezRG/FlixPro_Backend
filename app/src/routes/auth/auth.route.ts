@@ -4,5 +4,5 @@ import { AuthController } from '../../controllers/auth/auth.controller';
 
 export default (app: Express): void => {
     app.post('/api/v1/auth', AuthController.createUser);
-    app.get('/api/v1/auth', AuthController.getAuthenticate);
+    app.post('/api/v1/auth/getAuth', AuthController.getAuthenticate);
 }
