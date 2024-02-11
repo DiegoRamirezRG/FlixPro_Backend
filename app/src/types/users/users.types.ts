@@ -1,3 +1,5 @@
+import { RolType } from "../roles/roles.types";
+
 export type Genders = 'Male' | 'Female' | 'Other';
 
 export interface UserAccountType{
@@ -29,3 +31,5 @@ export interface UserCredentialsType{
 
 export type CreateAccountType = Omit<UserAccountType, 'id_user_account' | 'user_active' | 'created_at' | 'updated_at'>;
 export type CreateCredentialsType = Omit<UserCredentialsType, 'id_user_credential' | 'user_token' | 'last_login' | 'last_try' | 'login_attempts' | 'fk_user_account' | 'created_at' | 'updated_at' >;
+
+export type LoggedUser = Omit<UserAccountType, 'id_user_account' | 'created_at' | 'updated_at'> & Omit<UserCredentialsType, 'id_user_credential' | 'password' | 'user_token' | 'last_login' | 'last_try' | 'login_attempts' | 'fk_user_account' | 'created_at' | 'updated_at'> & Omit<RolType, 'id_user_role' | 'role_active' | 'created_at' | 'updated_at'>;
