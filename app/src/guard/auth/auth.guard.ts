@@ -7,7 +7,7 @@ export const AuthGuardian : AuthGuardianInterface = {
 
     async validateToken(token: string) {
         return new Promise(async(resolve, reject) => {
-            jwt.verify(token, process.env.JWTS!, (err, decoded) => {
+            jwt.verify(token, process.env.JWT_ACC!, (err, decoded) => {
                 if(err){
                     reject(new Error('El token no es valido'));
                 }else{
