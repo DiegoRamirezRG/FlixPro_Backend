@@ -8,7 +8,7 @@ export const CinemaWizardController: CinemaWizardControllerInterface = {
 
             return res.status(201).json({
                 success: true,
-                message: 'Usuario creado exitosamente',
+                message: 'Estado de configuracion de inicio obtenida correctamente',
                 data: status
             });
         } catch (error: any) {
