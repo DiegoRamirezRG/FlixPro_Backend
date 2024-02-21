@@ -51,8 +51,8 @@ CREATE TABLE user_credentials(
 DROP TABLE IF EXISTS cinema_global;
 CREATE TABLE cinema_global(
     id_cinema_global UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    name VARCHAR(255),
-    image TEXT,
+    name VARCHAR(255) NULL,
+    image TEXT NULL,
     fk_admin_user UUID NOT NULL,
     setting_step SMALLINT DEFAULT 0 NOT NULL,
     config_finished BOOLEAN DEFAULT false NOT NULL,

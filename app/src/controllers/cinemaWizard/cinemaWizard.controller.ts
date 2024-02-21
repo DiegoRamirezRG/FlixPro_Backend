@@ -1,10 +1,16 @@
+import { IncomingHttpHeaders } from "http";
 import { CinemaWizardControllerInterface } from "../../interfaces/cinemaWizard/cinemaWizard.controller.interface";
 import { CinemaWizardModel } from "../../models/cinemaWizard/cinemaWizard.model";
+import { AuthModel } from "../../models/auth/auth.model";
 
 export const CinemaWizardController: CinemaWizardControllerInterface = {
     async getWizardStatus(req, res, next){
         try {
-            const status = await CinemaWizardModel.getWizardStatusByUserId('f1d79a8f-fa0e-4254-aaa0-4c997eeebbad');
+            const headers: IncomingHttpHeaders = req.headers;
+            const access_token = headers['authorization'];
+
+            const user_id = await AuthModel.validateAccessToken(access_token as string);
+            const status = await CinemaWizardModel.getWizardStatusByUserId(user_id );
 
             return res.status(201).json({
                 success: true,
