@@ -4,4 +4,5 @@ import { CinemaWizardController } from '../../controllers/cinemaWizard/cinemaWiz
 
 export default (app: Express): void => {
     app.get('/api/v1/cinemaWizard/status', jwtValidatorMiddleware, CinemaWizardController.getWizardStatus);
+    app.post('/api/v1/cinemaWizard/finishInitConfig', jwtValidatorMiddleware, CinemaWizardController.finishInitConfig);
 }

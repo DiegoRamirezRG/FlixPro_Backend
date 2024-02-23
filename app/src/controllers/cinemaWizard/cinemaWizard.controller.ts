@@ -25,5 +25,22 @@ export const CinemaWizardController: CinemaWizardControllerInterface = {
                 error: error.message ? error.message : error
             });
         }
+    },
+
+    async finishInitConfig(req, res, next){
+        try {
+            return res.status(201).json({
+                success: true,
+                message: 'Estado de configuracion de inicio obtenida correctamente',
+                data: false
+            });
+        } catch (error: any) {
+            console.error(error);
+            return res.status(400).json({
+                success: false,
+                message: 'Ha ocurrido un error al crear el usuario',
+                error: error.message ? error.message : error
+            });
+        }
     }
 }
